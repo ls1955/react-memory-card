@@ -1,8 +1,11 @@
-# React + Vite
+# React-Memory-Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is part of [The Odin Project's curriculum](https://www.theodinproject.com/lessons/react-new-memory-card). It is a memory game written with React. In the game, player has to keep choosing a card without repeating it.
 
-Currently, two official plugins are available:
+## Getting Started (Run locally)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+After clone and cd into repo:
+```shell
+npm install
+npm run dev
+```
