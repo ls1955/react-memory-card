@@ -1,5 +1,13 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 #root {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 header {
@@ -7,4 +15,10 @@ header {
     justify-content: space-around;
     align-items: center;
     text-align: center;
+}
+
+#cards-container {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
