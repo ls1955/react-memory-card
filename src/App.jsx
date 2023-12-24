@@ -5,33 +5,38 @@ import "./App.css";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [cards, setCards] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const populateCards = async () => {
-      const promises = pokemonNames.map(async (name, i) => {
+    const populateData = async () => {
+      const promises = pokemonNames.map(async (name) => {
         try {
           const uri = `https://pokeapi.co/api/v2/pokemon-form/${name}/`;
 
           const data = await fetch(uri);
           const json = await data.json();
-          const spriteUrl = json["sprites"]["front_default"];
 
-          return <Card key={i} imgSrc={spriteUrl} name={name} />;
+          return { name, imgSrc: json["sprites"]["front_default"] };
         } catch (error) {
           console.error(error);
         }
       });
 
-      const newCards = await Promise.all(promises);
-      setCards(newCards);
+      const newData = await Promise.all(promises);
+      setData(newData);
     };
 
-    populateCards();
+    populateData();
   }, []);
 
   const loadingText = <p>Loading...</p>;
+
+  const cards = data.map(({ name, imgSrc }, i) => {
+    return <Card key={i} name={name} imgSrc={imgSrc} />;
+  });
   const cardsContainer = <div className="cards-containers">{cards}</div>;
+
+  const body = data.length === 0 ? loadingText : cardsContainer;
 
   return (
     <>
@@ -45,7 +50,7 @@ function App() {
           <p>Score: 0</p>
         </div>
       </header>
-      {cards.length === 0 ? { loadingText } : { cardsContainer }}
+      {body}
     </>
   );
 }
