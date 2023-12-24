@@ -1,8 +1,9 @@
-import Card from "./Card";
-import pokemonNames from "./pokemonNames";
-
 import "./App.css";
 import { useEffect, useState } from "react";
+
+import Card from "./Card";
+import pokemonNames from "./pokemonNames";
+import shuffle from "./arrayHelpers";
 
 function App() {
   const [data, setData] = useState([]);
@@ -47,7 +48,7 @@ function App() {
     };
     return <Card key={i} {...props} />;
   });
-  const cardsContainer = <div className="cards-containers">{cards}</div>;
+  const cardsContainer = <div className="cards-containers">{shuffle(cards)}</div>;
 
   const body = data.length === 0 ? loadingText : cardsContainer;
 
