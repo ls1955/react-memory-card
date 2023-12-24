@@ -48,7 +48,7 @@ function App() {
     };
     return <Card key={i} {...props} />;
   });
-  const cardsContainer = <div className="cards-containers">{shuffle(cards)}</div>;
+  const cardsContainer = <div id="cards-container">{shuffle(cards)}</div>;
 
   const body = data.length === 0 ? loadingText : cardsContainer;
 
