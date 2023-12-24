@@ -1,6 +1,6 @@
 import "./Card.css";
 
-export default function Card({
+function Card({
   name,
   imgSrc,
   pickedNames,
@@ -29,3 +29,5 @@ export default function Card({
     </button>
   );
 }
+
+export default Card;
