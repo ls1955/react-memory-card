@@ -1,10 +1,10 @@
 import "./Card.css";
 
-function Card({ imgSrc, text }) {
+function Card({ imgSrc, name }) {
   return (
     <div>
-      <img src={imgSrc} alt={text} />
-      <p>{text}</p>
+      <img src={imgSrc} alt={name} />
+      <p>{name}</p>
     </div>
   );
 }
