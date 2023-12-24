@@ -1,4 +1,5 @@
 body {
+    background-color: rgb(250, 250, 250);
     padding: 0;
     margin: 0;
 }
@@ -7,10 +8,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 header {
+    width: 100%;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -18,7 +20,10 @@ header {
 }
 
 #cards-container {
-    margin: 10px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 20px;
+    margin-bottom: 20px;
 }

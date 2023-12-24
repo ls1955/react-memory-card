@@ -25,7 +25,7 @@ function Card({
   };
 
   return (
-    <button onClick={handleClick}>
+    <button onClick={handleClick} className="card">
       <img src={imgSrc} alt={name} />
       <p>{name}</p>
     </button>
