@@ -2,9 +2,11 @@ body {
     background-color: rgb(250, 250, 250);
     padding: 0;
     margin: 0;
+    align-items: flex-start;
 }
 
 #root {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

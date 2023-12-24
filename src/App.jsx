@@ -1,8 +1,10 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 
-import Card from "./Card";
 import pokemonNames from "./pokemonNames";
+import Card from "./Card";
+import GameOverDialog from "./GameOverDialog";
+
 import shuffle from "./arrayHelpers";
 
 function App() {
@@ -33,8 +35,6 @@ function App() {
     populateData();
   }, []);
 
-  const loadingText = <p>Loading...</p>;
-
   const cards = data.map(({ name, imgSrc }, i) => {
     const props = {
       name,
@@ -46,11 +46,19 @@ function App() {
       hiScore,
       setHiScore,
     };
+    props["hasPicked"] = pickedNames.includes(name);
     return <Card key={i} {...props} />;
   });
   const cardsContainer = <div id="cards-container">{shuffle(cards)}</div>;
 
-  const body = data.length === 0 ? loadingText : cardsContainer;
+  let body = null;
+  if (data.length === 0) {
+    body = <p>Loading text...</p>;
+  } else if (score !== data.length) {
+    body = cardsContainer;
+  } else {
+    body = <GameOverDialog />;
+  }
 
   return (
     <>

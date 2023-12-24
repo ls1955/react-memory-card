@@ -11,6 +11,7 @@ function Card({
   setScore,
   hiScore,
   setHiScore,
+  hasPicked
 }) {
   const handleClick = () => {
     if (pickedNames.includes(name)) {
@@ -25,7 +26,7 @@ function Card({
   };
 
   return (
-    <button onClick={handleClick} className="card">
+    <button onClick={handleClick} className="card" style={{backgroundColor: (hasPicked && "red")}}>
       <img src={imgSrc} alt={name} />
       <p>{name}</p>
     </button>
