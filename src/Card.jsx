@@ -1,12 +1,10 @@
 import "./Card.css";
 
-function Card({ imgSrc, name }) {
+export default function Card({ name, imgSrc }) {
   return (
-    <div>
+    <button>
       <img src={imgSrc} alt={name} />
       <p>{name}</p>
-    </div>
+    </button>
   );
 }
-
-export default Card;
