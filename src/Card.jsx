@@ -1,8 +1,29 @@
 import "./Card.css";
 
-export default function Card({ name, imgSrc }) {
+export default function Card({
+  name,
+  imgSrc,
+  pickedNames,
+  setPickedNames,
+  score,
+  setScore,
+  hiScore,
+  setHiScore,
+}) {
+  const handleClick = () => {
+    if (pickedNames.includes(name)) {
+      setScore(0)
+      setHiScore(Math.max(score, hiScore))
+      setPickedNames([])
+    } else {
+      setScore(score + 1)
+      setHiScore(Math.max(score + 1, hiScore))
+      setPickedNames([...pickedNames, name])
+    }
+  }
+
   return (
-    <button>
+    <button onClick={handleClick}>
       <img src={imgSrc} alt={name} />
       <p>{name}</p>
     </button>
