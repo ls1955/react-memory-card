@@ -1,5 +1,5 @@
 import Card from "./Card";
-import pokemonNames from "./pokemon_names";
+import pokemonNames from "./pokemonNames";
 
 import "./App.css";
 import { useEffect, useState } from "react";
