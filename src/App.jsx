@@ -8,7 +8,7 @@ function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const populateCards = async () => {
       const promises = pokemonNames.map(async (name, i) => {
         try {
           const uri = `https://pokeapi.co/api/v2/pokemon-form/${name}/`;
@@ -17,20 +17,20 @@ function App() {
           const json = await data.json();
           const spriteUrl = json["sprites"]["front_default"];
 
-          return <Card key={i} imgSrc={spriteUrl} text={name} />;
+          return <Card key={i} imgSrc={spriteUrl} name={name} />;
         } catch (error) {
           console.error(error);
         }
       });
 
       const newCards = await Promise.all(promises);
-      console.log(newCards)
       setCards(newCards);
     };
 
-    fetchData();
+    populateCards();
   }, []);
 
+  const loadingText = <p>Loading...</p>;
   const cardsContainer = <div className="cards-containers">{cards}</div>;
 
   return (
@@ -45,8 +45,7 @@ function App() {
           <p>Score: 0</p>
         </div>
       </header>
-      {/* {cards.length === 0 ? "loading" : {cardsContainer}} */}
-      {cardsContainer}
+      {cards.length === 0 ? { loadingText } : { cardsContainer }}
     </>
   );
 }
