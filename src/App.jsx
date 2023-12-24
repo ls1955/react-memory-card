@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState([]);
+  const [pickedNames, setPickedNames] = useState([]);
+  const [score, setScore] = useState(0);
+  const [hiScore, setHiScore] = useState(0);
 
   useEffect(() => {
     const populateData = async () => {
@@ -32,7 +35,17 @@ function App() {
   const loadingText = <p>Loading...</p>;
 
   const cards = data.map(({ name, imgSrc }, i) => {
-    return <Card key={i} name={name} imgSrc={imgSrc} />;
+    const props = {
+      name,
+      imgSrc,
+      pickedNames,
+      setPickedNames,
+      score,
+      setScore,
+      hiScore,
+      setHiScore,
+    };
+    return <Card key={i} {...props} />;
   });
   const cardsContainer = <div className="cards-containers">{cards}</div>;
 
@@ -46,8 +59,8 @@ function App() {
           <p>Beat the game by picking all cards without repeating once.</p>
         </div>
         <div>
-          <p>Hi-score: 0</p>
-          <p>Score: 0</p>
+          <p>Hi-score: {hiScore}</p>
+          <p>Score: {score}</p>
         </div>
       </header>
       {body}
