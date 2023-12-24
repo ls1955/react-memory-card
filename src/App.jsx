@@ -46,7 +46,6 @@ function App() {
       hiScore,
       setHiScore,
     };
-    props["hasPicked"] = pickedNames.includes(name);
     return <Card key={i} {...props} />;
   });
   const cardsContainer = <div id="cards-container">{shuffle(cards)}</div>;
