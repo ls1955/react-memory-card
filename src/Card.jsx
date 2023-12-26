@@ -2,30 +2,9 @@ import "./Card.css";
 
 import Proptypes from "prop-types";
 
-function Card({
-  name,
-  imgSrc,
-  pickedNames,
-  setPickedNames,
-  score,
-  setScore,
-  hiScore,
-  setHiScore,
-}) {
-  const handleClick = () => {
-    if (pickedNames.includes(name)) {
-      setScore(0);
-      setHiScore(Math.max(score, hiScore));
-      setPickedNames([]);
-    } else {
-      setScore(score + 1);
-      setHiScore(Math.max(score + 1, hiScore));
-      setPickedNames([...pickedNames, name]);
-    }
-  };
-
+function Card({ name, imgSrc, onClick }) {
   return (
-    <button onClick={handleClick} className="card">
+    <button onClick={onClick} className="card">
       <img src={imgSrc} alt={name} />
       <p>{name}</p>
     </button>
@@ -35,12 +14,7 @@ function Card({
 Card.propTypes = {
   name: Proptypes.string,
   imgSrc: Proptypes.string,
-  pickedNames: Proptypes.array,
-  setPickedNames: Proptypes.func,
-  score: Proptypes.number,
-  setScore: Proptypes.func,
-  hiScore: Proptypes.number,
-  setHiScore: Proptypes.func,
+  onClick: Proptypes.func,
 };
 
 export default Card;

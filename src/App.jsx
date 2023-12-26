@@ -35,18 +35,28 @@ function App() {
     populateData();
   }, []);
 
-  const cards = data.map(({ name, imgSrc }, i) => {
-    const props = {
-      name,
-      imgSrc,
-      pickedNames,
-      setPickedNames,
-      score,
-      setScore,
-      hiScore,
-      setHiScore,
+  const handleClick = (name) => {
+    return () => {
+      if (pickedNames.includes(name)) {
+        setScore(0);
+        setPickedNames([]);
+      } else {
+        setScore((prevScore) => {
+          const newScore = prevScore + 1;
+          if (newScore > hiScore) {
+            setHiScore(newScore);
+          }
+          return newScore;
+        });
+        setPickedNames([...pickedNames, name]);
+      }
     };
-    return <Card key={i} {...props} />;
+  };
+
+  const cards = data.map(({ name, imgSrc }, i) => {
+    return (
+      <Card key={i} name={name} imgSrc={imgSrc} onClick={handleClick(name)} />
+    );
   });
   const cardsContainer = <div id="cards-container">{shuffle(cards)}</div>;
 
