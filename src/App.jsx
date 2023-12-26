@@ -52,7 +52,7 @@ function App() {
 
   let body = null;
   if (cards.length === 0) {
-    body = <p>Loading text...</p>;
+    body = <p>Loading...</p>;
   } else if (score !== cards.length) {
     body = cardsContainer;
   } else {
