@@ -51,9 +51,9 @@ function App() {
   const cardsContainer = <div id="cards-container">{shuffle(cards)}</div>;
 
   let body = null;
-  if (data.length === 0) {
+  if (cards.length === 0) {
     body = <p>Loading text...</p>;
-  } else if (score !== data.length) {
+  } else if (score !== cards.length) {
     body = cardsContainer;
   } else {
     body = <GameOverDialog />;
